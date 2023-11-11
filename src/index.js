@@ -5,10 +5,17 @@ const path = require('path')  // thư viện mặc định của express
 const fs = require('fs')   // thư viện mặc định của express
 const morgan = require('morgan')  // thư viện giúp quan sát log http request từ client gửi đến
 const { engine } = require('express-handlebars');  // view engine
+const route = require('./routes')  // default is index.js --> <=> ./routes/index.js
 
 
 const app = express()  // trả lại một instance đại diện cho ứng dụng nodejs
 const port = 3000
+
+//Set middleware for form data with method POST
+app.use(express.urlencoded({
+  extended: true
+}))
+app.use(express.json())
 
 // Set up folder of static file
 app.use(express.static(path.join(__dirname, 'public')));
@@ -25,11 +32,14 @@ app.engine('hbs', engine({extname: '.hbs'}));  // extname default là .handlebar
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'resources\\views'));
 
+
+
 // Define route
 // Tham số thứ hai là một hàm callback (ở đây là arrow function, có thể dùng function bình thường cũng được)
-app.get('/', (req, res) => {
-  res.render('news')
-})
+// route init
+route(app)
+
+
 
 // Create port listener
 app.listen(port, () => {
