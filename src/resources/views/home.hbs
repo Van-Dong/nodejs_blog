@@ -1,8 +1,7 @@
-<div class="mt-4">
+<div class="mt-4 conatiner">
     <div class="row">
-        <div class="col-sm-6 col-lg-4">
             {{#each courses}}
-            <div class="card card-course-item">
+            <div class="card card-course-item col">
                 <a href="courses/{{this.slug}}">
                     <img src="{{this.image}}" class="card-img-top" alt="Card image">
                 </a>
@@ -15,6 +14,5 @@
                 </div>
             </div>
             {{/each}}
-        </div>
     </div>
 </div>
