@@ -1,8 +1,12 @@
 @import 'variables'; //Tự nó sẽ bổ sung thành _variables.scss
-h1 {
-    color: $red-color;
+
+.user-avatar {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    margin-right: 4px;
 }
 
-h2 {
-    color: blue;
+.checkbox-select-all-options {
+    margin: 0 16px;
 }

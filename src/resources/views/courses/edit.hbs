@@ -1,0 +1,22 @@
+<h1>Chỉnh sửa khóa học</h1>
+
+<form action="/courses/{{course._id}}?_method=PUT" method="POST">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Name</label>
+    <input type="text" class="form-control" aria-describedby="emailHelp" value="{{course.name}}" placeholder="Name" name="name">
+
+    <label for="exampleInputEmail1">Description</label>
+    <textarea class="form-control" aria-describedby="emailHelp" placeholder="Description" name="description">{{course.description}}</textarea>
+
+    <label for="exampleInputEmail1">Image</label>
+    <input type="text" class="form-control" aria-describedby="emailHelp" value="{{course.image}}" placeholder="Image" name="image">
+
+    <label for="exampleInputEmail1">Video ID</label>
+    <input type="text" class="form-control" aria-describedby="emailHelp" value="{{course.videoId}}" placeholder="VideoID" name="videoId">
+
+    <label for="exampleInputEmail1">Level</label>
+    <input type="text" class="form-control" aria-describedby="emailHelp" value="{{course.level}}" placeholder="Level" name="level">
+  </div>
+
+  <button type="submit" class="btn btn-primary">Lưu lại</button>
+</form>
