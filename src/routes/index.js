@@ -4,6 +4,7 @@ const newsRouter = require('./news');
 const siteRouter = require('./site');
 const coursesRouter = require('./courses');
 const meRouter = require('./me');
+const userRouter = require('./users');
 
 function route(app) {
     // Ở hàm này, express kiểm tra sẽ biết được nó đang truyền vào một Router ở đối số thứ 2
@@ -14,6 +15,8 @@ function route(app) {
     app.use('/courses', coursesRouter);
 
     app.use('/news', newsRouter);
+
+    app.use('/auth', userRouter);
 
     app.use('/', siteRouter);
 }

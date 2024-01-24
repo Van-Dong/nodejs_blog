@@ -11,5 +11,6 @@ router.put('/:id', courseController.update)
 router.delete('/:id/force', courseController.forceDelete)
 router.delete('/:id', courseController.delete)
 router.get('/:slug', courseController.show);
+router.get('/', courseController.index)
 
 module.exports = router;

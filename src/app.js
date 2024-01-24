@@ -6,10 +6,12 @@ const fs = require('fs'); // thư viện mặc định của express
 const morgan = require('morgan'); // thư viện giúp quan sát log http request từ client gửi đến
 const { engine } = require('express-handlebars'); // view engine
 var methodOverride = require('method-override') // để dùng được các phương thức PUT, PATCH, DELETE
+const cookieParser = require('cookie-parser');
 
 const route = require('./routes'); // default is index.js --> <=> ./routes/index.js
 const db = require('./config/db');
 const SortMiddleware = require('./app/middlewares/SortMiddleware');
+const authMiddleware = require('./app/middlewares/AuthMiddleware');
 
 const app = express(); // trả lại một instance đại diện cho ứng dụng nodejs
 const port = 3000;
@@ -21,6 +23,7 @@ app.use(
     }),
 );
 app.use(express.json());
+app.use(cookieParser()); //convert cookie to object js
 
 // Set up folder of static file (middleware)
 app.use(express.static(path.join(__dirname, 'public')));
@@ -73,6 +76,7 @@ app.use(methodOverride('_method'))
 
 // Middleware customer
 app.use(SortMiddleware)
+app.use(authMiddleware);
 
 // Define route
 // Tham số thứ hai là một hàm callback (ở đây là arrow function, có thể dùng function bình thường cũng được)
